@@ -2,6 +2,3 @@ pandas
 scikit-learn
 seaborn
 lime
-pickle
-
-
