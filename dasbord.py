@@ -8,17 +8,17 @@ from lime import lime_tabular
 import streamlit.components.v1 as cp
 import pickle
 
-clf_path = 'model.pkl'
-with open(clf_path, 'rb') as f:
-    model = pickle.load(f) 
+clf_inter = 'local_I.pkl'
+with open(clf_inter, 'rb') as f:
+    local_inter = pickle.load(f) 
 
 
 url='http://mohamed22222.pythonanywhere.com/api'
 
 @st.cache
 def load_data():
-    df = pd.read_csv('X_test.csv', index_col='SK_ID_CURR', encoding ='utf-8')
-    df.drop(columns=['Unnamed: 0'],inplace=True)
+    df = pd.read_csv('X_test1.csv', index_col='SK_ID_CURR', encoding ='utf-8')
+    #df.drop(columns=['Unnamed: 0'],inplace=True)
     return df
 
 data1=load_data()
@@ -67,3 +67,7 @@ else :
 
 
 #cp.html(exp.as_html(),height=400)
+
+exp= local_inter[str(float(id))]
+cp.html(exp.as_html(),height=400)
+
